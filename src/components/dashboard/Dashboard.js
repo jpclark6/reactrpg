@@ -10,7 +10,6 @@ class Dashboard extends Component {
                 <div className="row">
                     <div className="col s12 m6">
                         <StatList />
-                        <SkillList />
                     </div>
                     <div className="col s12 m5 offset-m1">
                         <TaskList />

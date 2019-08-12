@@ -2,15 +2,50 @@ import React from 'react';
 
 const StatList = () => {
     return (
-        <div>
+        <div className="brown-text text-darken-4">
             <h1 className="center">Xp 3028</h1>
-            <ul className="collection with-header">
-                <li className="collection-header center"><h4>Skills</h4></li>
-                <li className="collection-item"><div>First<span href="#!" className="secondary-content">83</span></div></li>
-                <li className="collection-item"><div>Second<span href="#!" className="secondary-content">723</span></div></li>
-                <li className="collection-item"><div>Third<span href="#!" className="secondary-content">723</span></div></li>
-                <li className="collection-item"><div>Fourth<span href="#!" className="secondary-content">723</span></div></li>
-            </ul>
+            <table className="flow-text">
+                <thead>
+                    <tr>
+                        <th>Skill</th>
+                        <th>Points</th>
+                        <th>Level</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Strength</td>
+                        <td>2,194</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>Intelligence</td>
+                        <td>1,328</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>Luck</td>
+                        <td>522</td>
+                        <td>14</td>
+                    </tr>
+                    <tr>
+                        <td>Strength</td>
+                        <td>2,194</td>
+                        <td>42</td>
+                    </tr>
+                    <tr>
+                        <td>Intelligence</td>
+                        <td>1,328</td>
+                        <td>21</td>
+                    </tr>
+                    <tr>
+                        <td>Luck</td>
+                        <td>522</td>
+                        <td>14</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
     )
 }

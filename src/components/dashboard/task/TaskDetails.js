@@ -2,7 +2,7 @@ import React from 'react'
 
 const TaskDetails = () => {
     return (
-        <div className="card z-depth-0 skill-summary">
+        <div className="card z-depth-0 skill-summary flow-text">
             <div className="card-content grey-text text-darken-3">
                 <span className="card-title">Skill Title</span>
                 <p>Something something</p>

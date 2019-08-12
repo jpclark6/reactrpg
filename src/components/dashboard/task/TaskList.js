@@ -3,7 +3,9 @@ import TaskDetails from './TaskDetails'
 
 const SkillList = () => {
     return (
-        <div className="skill-list section">
+        <div className="brown-text text-darken-4">
+            <h1 className="center">Quests</h1>
+            <div className="center-align"><a className="waves-effect waves-light btn-small teal darken-3"><i className="material-icons left">create</i>Add New Quest</a></div>
             <TaskDetails />
             <TaskDetails />
             <TaskDetails />

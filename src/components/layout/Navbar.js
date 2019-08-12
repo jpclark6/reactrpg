@@ -2,16 +2,15 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import SignedInLinks from './SignedInLinks';
 import SignedOutLinks from './SignedOutLinks';
+import tree from '../../assets/tree-icon.png';
 
 class Navbar extends Component {
     render() {
         return (
-            <nav className="nav-wrapper green darken-4">
-                <div className="container">
-                    <Link to='/' className='brand-logo'>FaahTree</Link>
-                    <SignedInLinks className="hide-on-med-and-down" />
-                    <SignedOutLinks className="hide-on-med-and-down" />
-                </div>
+            <nav className="nav-wrapper teal darken-4">
+                <Link to='/' className='brand-logo'><i class="material-icons large">spa</i>FaahTree</Link>
+                <SignedInLinks/>
+                <SignedOutLinks/>
             </nav>
         )
     }
