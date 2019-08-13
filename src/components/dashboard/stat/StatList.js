@@ -3,7 +3,7 @@ import React from 'react';
 const StatList = () => {
     return (
         <div className="brown-text text-darken-4">
-            <h1 className="center">Xp 3028</h1>
+            <h3 className="center">Xp 3028</h3>
             <table className="flow-text">
                 <thead>
                     <tr>

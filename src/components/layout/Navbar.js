@@ -8,7 +8,7 @@ class Navbar extends Component {
     render() {
         return (
             <nav className="nav-wrapper teal darken-4">
-                <Link to='/' className='brand-logo'><i class="material-icons large">spa</i>FaahTree</Link>
+                <Link to='/' className='brand-logo left'><i class="material-icons large">spa</i>FaahTree</Link>
                 <SignedInLinks/>
                 <SignedOutLinks/>
             </nav>

@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 const SignedInLinks = () => {
     return (
-        <ul className="right hide-on-med-and-down">
+        <ul className="right">
             <li><NavLink to='/'>New Task</NavLink></li>
             <li><NavLink to='/'>Log Out</NavLink></li>
         </ul>
