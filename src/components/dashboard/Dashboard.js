@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import StatList from './stat/StatList';
-import SkillList from './skill/SkillList';
+// import SkillList from './skill/SkillList';
 import TaskList from './task/TaskList';
+import { firestoreConnect } from 'react-redux-firebase';
 
 class Dashboard extends Component {
     render() {

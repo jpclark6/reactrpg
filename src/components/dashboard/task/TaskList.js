@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import TaskDetails from './TaskDetails'
 import { connect } from 'react-redux'
 
-class SkillList extends Component {
+class TaskList extends Component {
     render() {
         // console.log(this.props);
         const { tasks } = this.props;
@@ -25,4 +25,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps)(SkillList);
+export default connect(mapStateToProps)(TaskList);

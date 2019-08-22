@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
+import { createTask } from '../../../store/actions/taskActions';
 
-export default class CreateTask extends Component {
+class CreateTask extends Component {
     state = {
         title: '',
         description: '',
@@ -16,18 +18,25 @@ export default class CreateTask extends Component {
         this.setState({
             [e.target.id]: e.target.value
         })
-        console.log(e.target.value);
+        // console.log(e.target.value);
+    }
+    handleNumChange = (e) => {
+        this.setState({
+            [e.target.id]: parseInt(e.target.value)
+        })
+        // console.log(e.target.value);
     }
     handleCheckboxChange = (e) => {
         const checked = !this.state.completed
         this.setState({
             [e.target.id]: checked
         })
-        console.log(checked);
+        // console.log(checked);
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        console.log(this.state);
+        // console.log(this.state);
+        this.props.createTask(this.state)
     }
     render() {
         return (
@@ -81,12 +90,12 @@ export default class CreateTask extends Component {
                     </div>
                     <div className="input-field">
                         <p className="range-field grey-text">
-                            Difficulty (1 easy - 10 hard)<span className="red-text">*</span><input type="range" id="difficulty" min="1" max="10" steps="1" onChange={this.handleChange} />
+                            Difficulty (1 easy - 10 hard)<span className="red-text">*</span><input type="range" id="difficulty" min="1" max="10" steps="1" onChange={this.handleNumChange} />
                         </p>
                     </div>
                     <div className="input-field">
                         <p className="range-field grey-text">
-                            Time (1 short - 10 long)<span className="red-text">*</span><input type="range" id="time" min="1" max="10" steps="1" onChange={this.handleChange} />
+                            Time (1 short - 10 long)<span className="red-text">*</span><input type="range" id="time" min="1" max="10" steps="1" onChange={this.handleNumChange} />
                         </p>
                     </div>
                     <div className="input-field">
@@ -135,3 +144,11 @@ export default class CreateTask extends Component {
         )
     }
 }
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        createTask: (task) => dispatch(createTask(task))
+    }
+}
+
+export default connect(null, mapDispatchToProps)(CreateTask)
