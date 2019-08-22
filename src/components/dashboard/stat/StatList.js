@@ -17,17 +17,17 @@ const StatList = () => {
                     <tr>
                         <td>Strength</td>
                         <td>2,194</td>
-                        <td>42</td>
+                        <td>42 - Novice</td>
                     </tr>
                     <tr>
                         <td>Intelligence</td>
                         <td>1,328</td>
-                        <td>21</td>
+                        <td>21 - Ameture</td>
                     </tr>
                     <tr>
                         <td>Luck</td>
                         <td>522</td>
-                        <td>14</td>
+                        <td>14 - Expert</td>
                     </tr>
                     <tr>
                         <td>Strength</td>

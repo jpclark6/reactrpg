@@ -3,8 +3,8 @@ import { NavLink } from 'react-router-dom';
 
 const SignedInLinks = () => {
     return (
-        <ul className="right">
-            <li><NavLink to='/'>New Task</NavLink></li>
+        <ul className="right hide-on-med-and-down">
+            <li><NavLink to='/quests/create'>New Quest</NavLink></li>
             <li><NavLink to='/'>Log Out</NavLink></li>
         </ul>
     )

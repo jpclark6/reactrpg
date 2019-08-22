@@ -14,8 +14,8 @@ function App() {
         <Navbar />
         <Switch>
           <Route exact path='/' component={Dashboard} />
-          <Route exact path='/quest/create' component={CreateTask} />
-          <Route path='/quest/:id' component={TaskShow} />
+          <Route exact path='/quests/create' component={CreateTask} />
+          <Route path='/quests/:id' component={TaskShow} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
         </Switch>
