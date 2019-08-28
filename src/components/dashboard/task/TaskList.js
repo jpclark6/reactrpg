@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
-import TaskDetails from './TaskDetails'
-import { connect } from 'react-redux'
+import TaskDetails from './TaskDetails';
+import { Link } from 'react-router-dom';
 
 class TaskList extends Component {
     render() {
         // console.log(this.props);
         const { tasks } = this.props;
-
-        return (
-            <div className="brown-text text-darken-4">
-                <h3 className="center">Quests</h3>
-                <div className="center-align"><a className="waves-effect waves-light btn-small teal darken-3"><i className="material-icons left">create</i>Add New Quest</a></div>
-                { tasks.map((task, i) => {
-                    return <TaskDetails task={task} key={i}/>
-                })}
-            </div>
-        )
+        console.log("props", this.props);
+        if (tasks) {
+            return (
+                <div className="brown-text text-darken-4">
+                    <h3 className="center">Quests</h3>
+                    <div className="center-align"><a className="waves-effect waves-light btn-small teal darken-3"><i className="material-icons left">create</i>Add New Quest</a></div>
+                    {tasks.map((task, i) => {
+                        return (
+                            <Link to={'/task/' + task.id} key={i}>
+                                <TaskDetails task={task} key={i} />
+                            </Link>
+                        )
+                    })}
+                </div>
+            )
+        } else {
+            return (
+                <p>Add some quests!</p>
+            )
+        }
+        
     }
 }
 
-const mapStateToProps = (state) => {
-    return {
-        tasks: state.task.tasks
-    }
-}
 
-export default connect(mapStateToProps)(TaskList);
+
+export default TaskList;

@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import StatList from './stat/StatList';
 // import SkillList from './skill/SkillList';
 import TaskList from './task/TaskList';
+import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
+import { compose } from 'redux';
 
 class Dashboard extends Component {
     render() {
+
+        const { tasks } = this.props;
+
         return (
             <div className="dashboard container">
                 <div className="row">
@@ -13,7 +18,7 @@ class Dashboard extends Component {
                         <StatList />
                     </div>
                     <div className="col s12 m5 offset-m1">
-                        <TaskList />
+                        <TaskList tasks={tasks}/>
                     </div>
                 </div>
             </div>
@@ -21,4 +26,16 @@ class Dashboard extends Component {
     }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+    console.log(state);
+    return {
+        tasks: state.firestore.ordered.tasks
+    }
+}
+
+export default compose(
+    connect(mapStateToProps),
+    firestoreConnect([
+        { collection: 'tasks' }
+    ])
+)(Dashboard);
