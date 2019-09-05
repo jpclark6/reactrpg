@@ -37,6 +37,7 @@ class CreateTask extends Component {
         e.preventDefault();
         // console.log(this.state);
         this.props.createTask(this.state)
+        this.props.history.push(`/`)
     }
     render() {
         return (

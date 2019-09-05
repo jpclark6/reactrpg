@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Link } from 'react-router-dom';
 
 const TaskShow = (props) => {
     const { task } = props;
@@ -11,14 +12,24 @@ const TaskShow = (props) => {
                 <div className="card z-depth-0 skill-summary flow-text">
                     <div className="card-content grey-text text-darken-3">
                         <span className="card-title">{task.title}</span>
-                        <p>Something something</p>
-                        <p className="grey-text">Date something</p>
+                        <p className="grey-text">{task.description}</p>
                     </div>
                     <div className="card-action grey lighten-4 grey-text">
-                        <div>Posted onSomething Something</div>
-                        <div>2nd of September, 2am</div>
+                        {task.reward &&
+                            <div>Rewared: {task.reward}</div>
+                        }
+                        <div>Difficulty: {task.difficulty}</div>
+                        <div>Time: {task.time}</div>
+                        <div>Category: {task.catetory}</div>
+                        <div>Expected increases:</div>
                     </div>
                 </div>
+                <h5>Completed?</h5>
+                <Link to={'/quests/success?id=' + task.id}><h5 className="teal-text text-darken-4">Yes - Success</h5></Link>
+                <Link to={'/quests/fail?id=' + task.id}><h5 className="teal-text text-darken-4">Yes - Fail</h5></Link>
+                <Link to='/'>
+                    <h6 className="center teal-text text-darken-4">Back</h6>
+                </Link>
             </div>
         )
     } else {
