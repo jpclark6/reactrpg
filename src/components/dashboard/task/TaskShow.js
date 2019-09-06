@@ -4,12 +4,14 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
+import calculateStatIncrease from './TaskStats';
 
 const TaskShow = (props) => {
     const { task, auth } = props;
     if (!auth.uid) return <Redirect to='/signin' />
     if (task) {
         if (task.authorId !== auth.uid) return <Redirect to='/' />
+        const increases = calculateStatIncrease(task);
         return (
             <div className="container section task-show">
                 <div className="card z-depth-0 skill-summary flow-text">
@@ -23,8 +25,14 @@ const TaskShow = (props) => {
                         }
                         <div>Difficulty: {task.difficulty}</div>
                         <div>Time: {task.time}</div>
-                        <div>Category: {task.catetory}</div>
+                        <div>Category: {task.category}</div>
                         <div>Expected increases:</div>
+                        <p>Strength: {increases.strength}</p>
+                        <p>Intelligence: {increases.intelligence}</p>
+                        <p>Stamina: {increases.stamina}</p>
+                        <p>Grit: {increases.grit}</p>
+                        <p>Karma: {increases.karma}</p>
+                        <p>Luck: {increases.luck}</p>
                     </div>
                 </div>
                 <h5>Completed?</h5>

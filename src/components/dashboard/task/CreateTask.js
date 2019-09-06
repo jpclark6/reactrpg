@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { createTask } from '../../../store/actions/taskActions';
 import { Redirect } from 'react-router-dom';
+import calculateStatIncrease from './TaskStats';
 
 class CreateTask extends Component {
     state = {
@@ -43,6 +44,7 @@ class CreateTask extends Component {
     render() {
         const { auth } = this.props;
         if (!auth.uid) return <Redirect to='/signin' />
+        const increases = calculateStatIncrease(this.state);
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
@@ -139,10 +141,12 @@ class CreateTask extends Component {
                 </form>
                 <div>
                     <h4>Estimated experience:</h4>
-                    <p>Strength +2</p>
-                    <p>Intelligence +1</p>
-                    <p>Karma -2</p>
-                    <p>Luck +1</p>
+                    <p>Strength: {increases.strength}</p>
+                    <p>Intelligence: {increases.intelligence}</p>
+                    <p>Stamina: {increases.stamina}</p>
+                    <p>Grit: {increases.grit}</p>
+                    <p>Karma: {increases.karma}</p>
+                    <p>Luck: {increases.luck}</p>
                 </div>
             </div>
         )
