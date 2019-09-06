@@ -9,15 +9,14 @@ import { Redirect } from 'react-router-dom';
 
 class Dashboard extends Component {
     render() {
-
-        const { tasks, auth } = this.props;
+        const { tasks, auth, profile } = this.props;
         if (!auth.uid) return <Redirect to='/signin' />
 
         return (
             <div className="dashboard container">
                 <div className="row">
                     <div className="col s12 m6">
-                        <StatList />
+                        <StatList profile={profile}/>
                     </div>
                     <div className="col s12 m5 offset-m1">
                         <TaskList tasks={tasks}/>
@@ -29,16 +28,16 @@ class Dashboard extends Component {
 }
 
 const mapStateToProps = (state) => {
-    // console.log(state);
     return {
         tasks: state.firestore.ordered.tasks,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        profile: state.firebase.profile
     }
 }
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'tasks' }
+    firestoreConnect(props => [
+        { collection: 'tasks', where: [['authorId', '==', props.auth.uid]] }
     ])
 )(Dashboard);

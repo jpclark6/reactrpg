@@ -6,12 +6,10 @@ class TaskList extends Component {
     render() {
         // console.log(this.props);
         const { tasks } = this.props;
-        console.log("props", this.props);
         if (tasks) {
-            tasks.sort((a, b) => {
+            var sortedTasks = tasks.slice().sort((a, b) => {
                 return b.created_at - a.created_at
             })
-            console.log(tasks)
             return (
                 <div className="brown-text text-darken-4">
                     <h3 className="center">Quests</h3>
@@ -22,7 +20,7 @@ class TaskList extends Component {
                             </p>
                         </div>
                     </Link>
-                    {tasks.map((task, i) => {
+                    {sortedTasks.map((task, i) => {
                         return (
                             <Link to={'/quests/' + task.id} key={i}>
                                 <TaskDetails task={task} key={i} />
@@ -39,7 +37,5 @@ class TaskList extends Component {
         
     }
 }
-
-
 
 export default TaskList;

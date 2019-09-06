@@ -9,6 +9,7 @@ const TaskShow = (props) => {
     const { task, auth } = props;
     if (!auth.uid) return <Redirect to='/signin' />
     if (task) {
+        if (task.authorId !== auth.uid) return <Redirect to='/' />
         return (
             <div className="container section task-show">
                 <div className="card z-depth-0 skill-summary flow-text">
