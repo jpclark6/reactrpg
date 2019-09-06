@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { createTask } from '../../../store/actions/taskActions';
+import { Redirect } from 'react-router-dom';
 
 class CreateTask extends Component {
     state = {
@@ -40,6 +41,8 @@ class CreateTask extends Component {
         this.props.history.push(`/`)
     }
     render() {
+        const { auth } = this.props;
+        if (!auth.uid) return <Redirect to='/signin' />
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
@@ -146,10 +149,16 @@ class CreateTask extends Component {
     }
 }
 
+const mapStateToProps = (state) => {
+    return {
+        auth: state.firebase.auth
+    }
+}
+
 const mapDispatchToProps = (dispatch) => {
     return {
         createTask: (task) => dispatch(createTask(task))
     }
 }
 
-export default connect(null, mapDispatchToProps)(CreateTask)
+export default connect(mapStateToProps, mapDispatchToProps)(CreateTask)

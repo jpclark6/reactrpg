@@ -3,9 +3,11 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 
 const TaskShow = (props) => {
-    const { task } = props;
+    const { task, auth } = props;
+    if (!auth.uid) return <Redirect to='/signin' />
     if (task) {
         return (
             <div className="container section task-show">
@@ -47,7 +49,8 @@ const mapStateToProps = (state, ownProps) => {
     const tasks = state.firestore.data.tasks;
     const task = tasks ? tasks[id] : null
     return {
-        task: task
+        task: task,
+        auth: state.firebase.auth
     }
 }
 
