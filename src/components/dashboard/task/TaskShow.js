@@ -7,11 +7,12 @@ import { Redirect } from 'react-router-dom';
 import calculateStatIncrease from './TaskStats';
 
 const TaskShow = (props) => {
-    const { task, auth } = props;
+    const { id, task, auth } = props;
     if (!auth.uid) return <Redirect to='/signin' />
     if (task) {
         if (task.authorId !== auth.uid) return <Redirect to='/' />
         const increases = calculateStatIncrease(task);
+        // console.log(task, id, "TASKSHOW");
         return (
             <div className="container section task-show">
                 <div className="card z-depth-0 skill-summary flow-text">
@@ -36,8 +37,8 @@ const TaskShow = (props) => {
                     </div>
                 </div>
                 <h5>Completed?</h5>
-                <Link to={'/quests/success?id=' + task.id}><h5 className="teal-text text-darken-4">Yes - Success</h5></Link>
-                <Link to={'/quests/fail?id=' + task.id}><h5 className="teal-text text-darken-4">Yes - Fail</h5></Link>
+                <Link to={'/quests/finish?id=' + id + '&success=true'}><h5 className="teal-text text-darken-4">Yes - Success</h5></Link>
+                <Link to={'/quests/finish?id=' + id + '&success=true'}><h5 className="teal-text text-darken-4">Yes - Fail</h5></Link>
                 <Link to='/'>
                     <h6 className="center teal-text text-darken-4">Back</h6>
                 </Link>
@@ -59,13 +60,14 @@ const mapStateToProps = (state, ownProps) => {
     const task = tasks ? tasks[id] : null
     return {
         task: task,
-        auth: state.firebase.auth
+        auth: state.firebase.auth,
+        id: id
     }
 }
 
 export default compose(
     connect(mapStateToProps),
-    firestoreConnect([
-        { collection: 'tasks' }
+    firestoreConnect(props => [
+        { collection: 'tasks', where: [['authorId', '==', props.auth.uid]] }
     ])
 )(TaskShow);

@@ -21,6 +21,7 @@ export default function calculateStatIncrease(task) {
             grit = 2 * multiplier;
             karma = 0 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
+            /* falls through */
         case 'fun':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 1 * multiplier;
@@ -29,6 +30,7 @@ export default function calculateStatIncrease(task) {
             grit = 0 * multiplier;
             karma = 1 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
+            /* falls through */
         case 'exercise':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 4 * multiplier;
@@ -37,6 +39,7 @@ export default function calculateStatIncrease(task) {
             grit = 2 * multiplier;
             karma = 2 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
+            /* falls through */
         case 'chore':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 0 * multiplier;
@@ -45,6 +48,7 @@ export default function calculateStatIncrease(task) {
             grit = 2 * multiplier;
             karma = 2 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
+            /* falls through */
         case 'work':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 0 * multiplier;
@@ -53,6 +57,7 @@ export default function calculateStatIncrease(task) {
             grit = 1 * multiplier;
             karma = 0 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
+            /* falls through */
         // default:
         //     multiplier = 0;
         //     strength = 0;
@@ -60,7 +65,8 @@ export default function calculateStatIncrease(task) {
         //     stamina = 0;
         //     grit = 0;
         //     karma = 0;
-        //     luck = 0;
+        //     luck = 2;
+            /* falls through */
     }
 
     // task.category [adulting, fun, exercise, chore, work]

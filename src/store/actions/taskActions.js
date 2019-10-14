@@ -14,3 +14,17 @@ export const createTask = (task) => {
         })
     }
 }
+
+export const updateTask = (task, completed, success) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('tasks').doc(task.id).update({
+            completed: completed,
+            successful: success
+        }).then(() => {
+            dispatch({ type: 'UPDATE_TASK', task });
+        }).catch((err) => {
+            dispatch({ type: 'UPDATE_TASK_ERROR', err })
+        })
+    }
+}

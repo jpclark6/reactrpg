@@ -6,6 +6,7 @@ import CreateTask from './components/dashboard/task/CreateTask';
 import TaskShow from './components/dashboard/task/TaskShow';
 import SignIn from './components/auth/SignIn';
 import SignUp from './components/auth/SignUp';
+import TaskSuccess from './components/dashboard/task/TaskSuccess'
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
         <Switch>
           <Route exact path='/' component={Dashboard} />
           <Route exact path='/quests/create' component={CreateTask} />
+          <Route path='/quests/finish' component={TaskSuccess} />
           <Route path='/quests/:id' component={TaskShow} />
           <Route path='/signin' component={SignIn} />
           <Route path='/signup' component={SignUp} />
