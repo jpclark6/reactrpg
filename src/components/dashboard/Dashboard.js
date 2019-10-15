@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
+import SkillsChart from './charts/SkillsChart';
 
 class Dashboard extends Component {
     render() {
@@ -17,6 +18,7 @@ class Dashboard extends Component {
                 <div className="row">
                     <div className="col s12 m6">
                         <StatList profile={profile} tasks={tasks}/>
+                        {/* <SkillsChart /> */}
                     </div>
                     <div className="col s12 m5 offset-m1">
                         <TaskList tasks={tasks}/>
@@ -38,6 +40,6 @@ const mapStateToProps = (state) => {
 export default compose(
     connect(mapStateToProps),
     firestoreConnect(props => [
-        { collection: 'tasks', where: [['authorId', '==', props.auth.uid]] }
+        { collection: 'tasks', where: [['authorId', '==', props.auth.uid || "5"]] }
     ])
 )(Dashboard);

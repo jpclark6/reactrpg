@@ -10,8 +10,8 @@ class CreateTask extends Component {
         description: '',
         reward: '',
         category: '',
-        difficulty: 0,
-        time: 0,
+        difficulty: 5,
+        time: 5,
         recurring: 'NONE',
         completed: false,
         successful: false
@@ -44,7 +44,7 @@ class CreateTask extends Component {
         return (
             <div className="container">
                 <form onSubmit={this.handleSubmit}>
-                    <h5 className="grey-text text-darken-3 center">Create Quest</h5>
+                    <h4 className="grey-text text-darken-3 center">Create Quest</h4>
                     <div className="input-field">
                         <label htmlFor="title">Quest Title<span className="red-text">*</span> </label>
                         <input type="text" id="title" onChange={this.handleChange} />
@@ -53,7 +53,7 @@ class CreateTask extends Component {
                         <label htmlFor="description">Description</label>
                         <input type="text" id="description" onChange={this.handleChange} />
                     </div>
-                    <div className="input-field">
+                    <div className="input-field hide">
                         <label htmlFor="reward">Reward (optional)</label>
                         <input type="text" id="reward" onChange={this.handleChange} />
                     </div>
@@ -62,13 +62,13 @@ class CreateTask extends Component {
                         <p>
                             <label>
                                 <input id="category" value="adulting" name="category" type="radio" onChange={this.handleChange} />
-                                <span>Adulting</span>
+                                <span>Adult Responsibility</span>
                             </label>
                         </p>
                         <p>
                             <label>
                                 <input id="category" value="fun" name="category" type="radio" onChange={this.handleChange} />
-                                <span>Fun</span>
+                                <span>Fun Times</span>
                             </label>
                         </p>
                         <p>
@@ -80,7 +80,7 @@ class CreateTask extends Component {
                         <p>
                             <label>
                                 <input id="category" value="chore" name="category" type="radio" onChange={this.handleChange} />
-                                <span>Chore</span>
+                                <span>Basic Chore</span>
                             </label>
                         </p>
                         <p>
@@ -100,7 +100,7 @@ class CreateTask extends Component {
                             Time (1 short - 10 long)<span className="red-text">*</span><input type="range" id="time" min="1" max="10" steps="1" onChange={this.handleNumChange} />
                         </p>
                     </div>
-                    <div className="input-field">
+                    <div className="input-field hide">
                         <p htmlFor="recurring" className="grey-text">Recurring<span className="red-text">*</span></p>
                         <p>
                             <label>
@@ -127,7 +127,7 @@ class CreateTask extends Component {
                             </label>
                         </p>
                     </div>
-                    <label htmlFor="completed">
+                    <label htmlFor="completed" className="hide">
                         <input type="checkbox" id="completed" value="completed" onChange={this.handleCheckboxChange} />
                         <span>Already completed</span>
                     </label>
