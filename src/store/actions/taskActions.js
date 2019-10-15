@@ -6,7 +6,8 @@ export const createTask = (task) => {
         firestore.collection('tasks').add({
             ...task,
             authorId: authorId,
-            createdAt: new Date()
+            createdAt: new Date(),
+            updatedAt: ""
         }).then(() => {
             dispatch({ type: 'CREATE_TASK', task });
         }).catch((err) => {
@@ -20,7 +21,8 @@ export const updateTask = (task, completed, success) => {
         const firestore = getFirestore();
         firestore.collection('tasks').doc(task.id).update({
             completed: completed,
-            successful: success
+            successful: success,
+            updatedAt: new Date()
         }).then(() => {
             dispatch({ type: 'UPDATE_TASK', task });
         }).catch((err) => {

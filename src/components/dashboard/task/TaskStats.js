@@ -56,20 +56,9 @@ export default function calculateStatIncrease(task) {
             karma = 0 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
             break;
-        // default:
-        //     multiplier = 0;
-        //     strength = 0;
-        //     intelligence = 0;
-        //     stamina = 0;
-        //     grit = 0;
-        //     karma = 0;
-        //     luck = 2;
-            /* falls through */
     }
 
-    // task.category [adulting, fun, exercise, chore, work]
-    // task.time 0-10
-    // task.difficulty 0-10
+    var xp = strength + intelligence + stamina + grit + karma + luck;
 
     var stats = {
         strength: strength,
@@ -77,7 +66,8 @@ export default function calculateStatIncrease(task) {
         stamina: stamina,
         grit: grit,
         karma: karma,
-        luck: luck
+        luck: luck,
+        xp: xp
     }
 
     return stats

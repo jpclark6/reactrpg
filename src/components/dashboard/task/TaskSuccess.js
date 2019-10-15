@@ -18,26 +18,58 @@ const TaskSuccess = (props) => {
             return task["id"] === id;
         });
         if (task.authorId !== auth.uid) return <Redirect to='/' />
+
         const increases = calculateStatIncrease(task);
+        const attVutes = {
+            strength: profile.attributes.strength + increases.strength,
+            grit: profile.attributes.grit + increases.grit,
+            intelligence: profile.attributes.intelligence + increases.intelligence,
+            karma: profile.attributes.karma + increases.karma,
+            luck: profile.attributes.luck + increases.luck,
+            stamina: profile.attributes.stamina + increases.stamina,
+            xp: profile.attributes.xp + increases.xp,
+            level: Math.floor(Math.sqrt(profile.attributes.xp + increases.xp) / 10)
+        }
+
         if (task.completed === false) {
             props.updateTask(task, true, success);
             if (success === true) {
-                const xp = profile.attributes.xp + increases.strength + increases.grit + increases.intelligence + increases.karma + increases.luck + increases.stamina;
-                const attVutes = {
-                    strength: profile.attributes.strength + increases.strength,
-                    grit: profile.attributes.grit + increases.grit,
-                    intelligence: profile.attributes.intelligence + increases.intelligence,
-                    karma: profile.attributes.karma + increases.karma,
-                    luck: profile.attributes.luck + increases.luck,
-                    stamina: profile.attributes.stamina + increases.stamina,
-                    xp: xp,
-                    level: Math.floor(Math.sqrt(xp) / 10)
-                }
                 props.updateUser(task.authorId, attVutes);
             }
         }
-        return (
-            <p className="hello">Nice Work!</p>
+        const points = (
+            <div className="points">
+                <h4>Xp: {increases.xp}</h4>
+                <h4 style={{ margin: "1px" }}>Strength: {attVutes.strength}</h4>
+                <h4 style={{ margin: "1px" }}>Grit: {attVutes.grit}</h4>
+                <h4 style={{ margin: "1px" }}>Intelligence: {attVutes.intelligence}</h4>
+                <h4 style={{margin: "1px"}}>Stamina: {attVutes.stamina}</h4>
+                <h4 style={{margin: "1px"}}>Karma: {attVutes.karma}</h4>
+                <h4 style={{margin: "1px"}}>Luck: {attVutes.luck}</h4>
+            </div>
+        )
+        return success ? (
+            <div className="card z-depth-0 skill-summary flow-text">
+                <div className="card-content center">
+                    <h2 className="green-text text-darken-2">Quest completed!</h2>
+                    <h4>"{task.title}"</h4>
+                    <h4 className="grey-text text-darken-1">Gained Points:</h4>
+                    {points}
+                </div>
+                <div className="center">
+                    <Link to='/'style={{fontSize: "35px"}}>Home</Link>
+                </div>
+            </div>
+        ) : (
+            <div className="card z-depth-0 skill-summary flow-text red lighten-4">
+                <div className="card-content">
+                    <h3>Quest failed:</h3>
+                    <h4>{task.title}</h4>
+                    <h4>Missed Points:</h4>
+                    {points}
+                    <Link to='/'>Home</Link>
+                </div>
+            </div>
         )
     } else {
         return (
