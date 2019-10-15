@@ -20,24 +20,20 @@ class CreateTask extends Component {
         this.setState({
             [e.target.id]: e.target.value
         })
-        // console.log(e.target.value);
     }
     handleNumChange = (e) => {
         this.setState({
             [e.target.id]: parseInt(e.target.value)
         })
-        // console.log(e.target.value);
     }
     handleCheckboxChange = (e) => {
         const checked = !this.state.completed
         this.setState({
             [e.target.id]: checked
         })
-        // console.log(checked);
     }
     handleSubmit = (e) => {
         e.preventDefault();
-        // console.log(this.state);
         this.props.createTask(this.state)
         this.props.history.push(`/`)
     }

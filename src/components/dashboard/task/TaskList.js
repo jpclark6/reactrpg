@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 class TaskList extends Component {
     render() {
-        // console.log(this.props);
         const { tasks } = this.props;
         if (tasks) {
             var sortedTasks = tasks.slice().sort((a, b) => {
-                return b.created_at - a.created_at
+                return b.createdAt.seconds - a.createdAt.seconds
             })
             return (
                 <div className="brown-text text-darken-4">

@@ -3,7 +3,11 @@ import React from 'react'
 const TaskDetails = ({task}) => {
     var classes;
     if (task.completed === true) {
-        classes = "card z-depth-0 skill-summary flow-text grey lighten-3"
+        if (task.successful === true) {
+            classes = "card z-depth-0 skill-summary flow-text green lighten-3"
+        } else {
+            classes = "card z-depth-0 skill-summary flow-text red lighten-3"
+        }
     } else {
         classes = "card z-depth-0 skill-summary flow-text lighten-3"
     }

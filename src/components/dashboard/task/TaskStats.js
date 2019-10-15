@@ -10,8 +10,6 @@ export default function calculateStatIncrease(task) {
     var time = task.time;
     var diff = task.difficulty;
 
-    console.log(task);
-
     switch (task.category) {
         case 'adulting':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
@@ -21,7 +19,7 @@ export default function calculateStatIncrease(task) {
             grit = 2 * multiplier;
             karma = 0 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
-            /* falls through */
+            break;
         case 'fun':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 1 * multiplier;
@@ -30,7 +28,7 @@ export default function calculateStatIncrease(task) {
             grit = 0 * multiplier;
             karma = 1 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
-            /* falls through */
+            break;
         case 'exercise':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 4 * multiplier;
@@ -39,7 +37,7 @@ export default function calculateStatIncrease(task) {
             grit = 2 * multiplier;
             karma = 2 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
-            /* falls through */
+            break;
         case 'chore':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 0 * multiplier;
@@ -48,7 +46,7 @@ export default function calculateStatIncrease(task) {
             grit = 2 * multiplier;
             karma = 2 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
-            /* falls through */
+            break;
         case 'work':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));
             strength = 0 * multiplier;
@@ -57,7 +55,7 @@ export default function calculateStatIncrease(task) {
             grit = 1 * multiplier;
             karma = 0 * multiplier;
             luck = Math.floor(Math.random() * multiplier);
-            /* falls through */
+            break;
         // default:
         //     multiplier = 0;
         //     strength = 0;
@@ -82,6 +80,5 @@ export default function calculateStatIncrease(task) {
         luck: luck
     }
 
-    console.log(stats)
     return stats
 }

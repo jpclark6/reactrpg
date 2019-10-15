@@ -12,7 +12,16 @@ const TaskShow = (props) => {
     if (task) {
         if (task.authorId !== auth.uid) return <Redirect to='/' />
         const increases = calculateStatIncrease(task);
-        // console.log(task, id, "TASKSHOW");
+        const complete = task.completed ? (
+            <p>Completed. Successful? {task.successful.toString()}</p>
+        ) : (
+            <div>
+                <h5>Completed?</h5>
+                <Link to={'/quests/finish?id=' + id + '&success=true'}><h5 className="teal-text text-darken-4">Yes - Success</h5></Link>
+                <Link to={'/quests/finish?id=' + id + '&success=false'}><h5 className="teal-text text-darken-4">Yes - Fail</h5></Link>
+            </div>
+        )
+
         return (
             <div className="container section task-show">
                 <div className="card z-depth-0 skill-summary flow-text">
@@ -36,9 +45,7 @@ const TaskShow = (props) => {
                         <p>Luck: {increases.luck}</p>
                     </div>
                 </div>
-                <h5>Completed?</h5>
-                <Link to={'/quests/finish?id=' + id + '&success=true'}><h5 className="teal-text text-darken-4">Yes - Success</h5></Link>
-                <Link to={'/quests/finish?id=' + id + '&success=true'}><h5 className="teal-text text-darken-4">Yes - Fail</h5></Link>
+                { complete }
                 <Link to='/'>
                     <h6 className="center teal-text text-darken-4">Back</h6>
                 </Link>
@@ -54,7 +61,6 @@ const TaskShow = (props) => {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    // console.log(state)
     const id = ownProps.match.params.id;
     const tasks = state.firestore.data.tasks;
     const task = tasks ? tasks[id] : null
