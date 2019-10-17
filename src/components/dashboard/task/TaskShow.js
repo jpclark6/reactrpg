@@ -53,9 +53,9 @@ const TaskShow = (props) => {
 
         const footer = task.completed ? 
             task.successful ?
-                <h4>Completed successfully on {new Date(task.updatedAt.seconds * 1000).toLocaleString()}</h4>
+                <h5>Completed successfully on {new Date(task.updatedAt.seconds * 1000).toLocaleString()}</h5>
                 :
-                <h4>Completed unsuccessfully on {new Date(task.updatedAt.seconds * 1000).toLocaleString()}</h4>
+                <h5>Completed unsuccessfully on {new Date(task.updatedAt.seconds * 1000).toLocaleString()}</h5>
          : (
             <div>
                 <h5>Update quest status</h5>
@@ -71,14 +71,14 @@ const TaskShow = (props) => {
                     <h3 className="" style={{ margin: "3px", padding: "3px" }}>{task.title}</h3>
                     <blockquote style={{fontSize: "20px"}}>{task.description}</blockquote>
                     <h4 style={{ margin: "1px", padding: "1px" }} className="grey-text">Stats:</h4>
-                    <h5 className="left-align">Difficulty: {difficulty}</h5>
-                    <h5 className="left-align">Time: {time}</h5>
-                    <h5 className="left-align">Strength: {increases.strength}</h5>
-                    <h5 className="left-align">Intelligence: {increases.intelligence}</h5>
-                    <h5 className="left-align">Stamina: {increases.stamina}</h5>
-                    <h5 className="left-align">Grit: {increases.grit}</h5>
-                    <h5 className="left-align">Karma: {increases.karma}</h5>
-                    <h5 className="left-align">Luck: {increases.luck}</h5>
+                    <h5 className="left-align"><b>Difficulty:</b> {difficulty}</h5>
+                    <h5 className="left-align"><b>Time:</b> {time}</h5>
+                    <h5 className="left-align"><b>Strength:</b> {increases.strength}</h5>
+                    <h5 className="left-align"><b>Intelligence:</b> {increases.intelligence}</h5>
+                    <h5 className="left-align"><b>Stamina:</b> {increases.stamina}</h5>
+                    <h5 className="left-align"><b>Grit:</b> {increases.grit}</h5>
+                    <h5 className="left-align"><b>Karma:</b> {increases.karma}</h5>
+                    <h5 className="left-align"><b>Luck:</b> {increases.luck}</h5>
                 </div>
 
                 { footer }

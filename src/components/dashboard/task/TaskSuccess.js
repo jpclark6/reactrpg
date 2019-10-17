@@ -61,7 +61,7 @@ const TaskSuccess = (props) => {
                 </div>
             </div>
         ) : (
-            <div className="card z-depth-0 skill-summary flow-text red lighten-4">
+            <div className="card z-depth-0 skill-summary flow-text red-text text-darken-2">
                 <div className="card-content">
                     <h3>Quest failed:</h3>
                     <h4>{task.title}</h4>
