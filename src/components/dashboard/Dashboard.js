@@ -7,19 +7,19 @@ import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { Redirect } from 'react-router-dom';
 import SkillsChart from './charts/SkillsChart';
+import SkillsDistributionChart from './charts/SkillsDistributionChart';
 
 class Dashboard extends Component {
     state = {
         toShow: false,
-        hideChartText: 'Show Chart'
+        hideChartText: 'Show Charts'
     }
     
     toggleChart = () => {
-        console.log("Button click", this.state.toShow);
         this.state.toShow === true ? 
             this.setState({ toShow: false }) : this.setState({ toShow: true });
         this.state.toShow === true ? 
-            this.setState({ hideChartText: 'Show Chart' }) : this.setState({ hideChartText: 'Hide Chart' });
+            this.setState({ hideChartText: 'Show Charts' }) : this.setState({ hideChartText: 'Hide Charts' });
     }
 
     render() {
@@ -40,8 +40,7 @@ class Dashboard extends Component {
                         <div className="center">
                             <button id="hide-chart" onClick={this.toggleChart} style={buttonStyle}>{this.state.hideChartText}</button>
                         </div>
-                        {this.state.toShow ? <SkillsChart /> : null}
-            
+                        {this.state.toShow ? <div><SkillsChart /><SkillsDistributionChart /></div> : null}
                     </div>
                     <div className="col s12 m5 offset-m1">
                         <TaskList tasks={tasks}/>

@@ -10,6 +10,7 @@ export default function calculateStatIncrease(task) {
     var time = task.time;
     var diff = task.difficulty;
 
+    // eslint-disable-next-line 
     switch (task.category) {
         case 'adulting':
             multiplier = 2 + Math.floor(Math.sqrt(time * diff));

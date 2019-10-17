@@ -7,7 +7,7 @@ const SignedInLinks = (props) => {
     return (
         <ul className="right">
             <li><NavLink to='/quests/create'>New Quest</NavLink></li>
-            <li><a onClick={props.signOut}>Log Out</a></li>
+            <li><button onClick={props.signOut} style={{color: "white"}}>Log Out</button></li>
         </ul>
     )
 }

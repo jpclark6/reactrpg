@@ -14,6 +14,7 @@ const TaskShow = (props) => {
         const increases = calculateStatIncrease(task);
         
         var difficulty;
+        // eslint-disable-next-line 
         switch (true) {
             case (task.difficulty <= 2):
                 difficulty = "Super easy. What are you waiting for!";
@@ -33,6 +34,7 @@ const TaskShow = (props) => {
         }
 
         var time;
+        // eslint-disable-next-line 
         switch (true) {
             case (task.time <= 2):
                 time = "Barely anything at all.";

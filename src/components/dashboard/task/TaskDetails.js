@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const TaskDetails = ({task}) => {
     var cardClasses;
@@ -8,7 +7,6 @@ const TaskDetails = ({task}) => {
     var updatedString;
     var success;
     
-    var createdAt = "";
     const createdDate = new Date(task.createdAt.seconds * 1000);
     const createdDateString = (createdDate.toLocaleString());
     

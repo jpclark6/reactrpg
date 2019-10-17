@@ -1,7 +1,7 @@
 import React from 'react';
 
 const StatList = (props) => {
-    const { profile, tasks } = props;
+    const { profile } = props;
     return profile.isEmpty ? <h4>Loading...</h4> :
      (
         <div className="brown-text text-darken-4">
