@@ -29,3 +29,14 @@ export const updateTask = (task, completed, success) => {
         })
     }
 }
+
+export const deleteTask = (task) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        firestore.collection('tasks').doc(task.id).delete().then(() => {
+            dispatch({ type: 'DELETE_TASK', task });
+        }).catch((err) => {
+            dispatch({ type: 'DELETE_TASK_ERROR', err })
+        })
+    }
+}

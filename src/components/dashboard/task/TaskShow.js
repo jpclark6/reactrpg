@@ -86,6 +86,9 @@ const TaskShow = (props) => {
                 <Link to='/'>
                     <h5 className="center teal-text text-darken-4">Back</h5>
                 </Link>
+                <Link to={'/quests/delete?id=' + id }>
+                    <h5 className="center teal-text text-darken-4">Delete</h5>
+                </Link>
             </div>
         )
     } else {
