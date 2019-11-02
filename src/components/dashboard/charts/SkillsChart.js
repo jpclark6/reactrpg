@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import '../../../../node_modules/react-vis/dist/style.css';
-import { XYPlot, LineSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis } from 'react-vis';
+import { XYPlot, LineSeries, VerticalGridLines, HorizontalGridLines, XAxis, YAxis, MarkSeries } from 'react-vis';
 import calculateStatIncrease from '../task/TaskStats';
 
 class SkillsChart extends Component {
@@ -14,9 +14,6 @@ class SkillsChart extends Component {
             var sortedFinishedTasks = finishedCompletedTasks.sort((a, b) => {
                 return a.updatedAt.seconds - b.updatedAt.seconds
             })
-            if (sortedFinishedTasks.length > 1) {
-                const timelineLength = sortedFinishedTasks[sortedFinishedTasks.length - 1].updatedAt.seconds - sortedFinishedTasks[0].updatedAt.seconds
-            }
             var statIncrease = [];
             sortedFinishedTasks.forEach((task) => {
                 statIncrease.push(calculateStatIncrease(task))
@@ -45,6 +42,7 @@ class SkillsChart extends Component {
                     <XAxis title="Date" tickLabelAngle={-90} tickFormat={v => new Date(v * 1000).toDateString()}/>
                     <YAxis title="Total XP" />
                     <LineSeries data={taskData} curve={'curveBundle'}/>
+                    <MarkSeries data={taskData} />
                 </XYPlot>
             </div>
         );

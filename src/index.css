@@ -1,3 +1,7 @@
 td {
     padding: 6px;
 }
+
+blockquote {
+    border-left: 5px solid #107860;
+}

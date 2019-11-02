@@ -25,7 +25,6 @@ class Dashboard extends Component {
     render() {
         const { tasks, auth, profile } = this.props;
         if (!auth.uid) return <Redirect to='/signin' />
-        
         const buttonStyle = {border: '1px solid grey', 
             backgroundColor: 'white', 
             borderRadius: '3px',

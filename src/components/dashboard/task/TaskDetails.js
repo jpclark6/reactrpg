@@ -1,4 +1,5 @@
 import React from 'react';
+import TimeAgo from 'react-timeago';
 
 const TaskDetails = ({task}) => {
     var cardClasses;
@@ -13,7 +14,7 @@ const TaskDetails = ({task}) => {
     if (task.hasOwnProperty('updatedAt') && task.updatedAt !== "") {
         var updatedDate = new Date(task.updatedAt.seconds * 1000);
         const updatedDateString = (updatedDate.toLocaleString());
-        updatedString = <p className="grey-text">Completed at {updatedDateString}</p>
+        updatedString = <p className="grey-text">Completed <TimeAgo date={updatedDateString} /></p>
     } else {
         updatedString = "";
     }
@@ -32,7 +33,7 @@ const TaskDetails = ({task}) => {
             <div className={cardClasses}>
                 <div className="card-content grey-text text-darken-3">
                     <span className={textClasses}>{success} "{task.title}"</span>
-                    <p className="grey-text">Created at: {createdDateString}</p>
+                    <p className="grey-text">Created <TimeAgo date={createdDateString} /></p>
                     {updatedString}
                 </div>
             </div>
@@ -45,7 +46,7 @@ const TaskDetails = ({task}) => {
                 <div className="card-content grey-text text-darken-3">
                     <span className={textClasses}>"{task.title}"</span>
                     <p>{task.description}</p>
-                    <p className="grey-text">Created at: {createdDateString}</p>
+                    <p className="grey-text">Created <TimeAgo date={createdDateString} /></p>
                     {updatedString}
                 </div>
             </div>

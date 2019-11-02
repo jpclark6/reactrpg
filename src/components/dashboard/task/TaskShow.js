@@ -68,20 +68,18 @@ const TaskShow = (props) => {
 
         return (
             <div className="container section task-show center">
-                <div className="card-content grey-text text-darken-3">
-                    <h4 style={{margin: "1px", padding: "1px"}} className="grey-text">Quest:</h4>
-                    <h3 className="" style={{ margin: "3px", padding: "3px" }}>{task.title}</h3>
-                    <blockquote style={{fontSize: "20px"}}>{task.description}</blockquote>
-                    <h4 style={{ margin: "1px", padding: "1px" }} className="grey-text">Stats:</h4>
-                    <h5 className="left-align"><b>Difficulty:</b> {difficulty}</h5>
-                    <h5 className="left-align"><b>Time:</b> {time}</h5>
-                    <h5 className="left-align"><b>Strength:</b> {increases.strength}</h5>
-                    <h5 className="left-align"><b>Intelligence:</b> {increases.intelligence}</h5>
-                    <h5 className="left-align"><b>Stamina:</b> {increases.stamina}</h5>
-                    <h5 className="left-align"><b>Grit:</b> {increases.grit}</h5>
-                    <h5 className="left-align"><b>Karma:</b> {increases.karma}</h5>
-                    <h5 className="left-align"><b>Luck:</b> {increases.luck}</h5>
-                </div>
+                <h4 style={{margin: "1px", padding: "1px"}} className="grey-text">Quest:</h4>
+                <h3 className="" style={{ margin: "3px", padding: "3px" }}>{task.title}</h3>
+                <blockquote style={{fontSize: "20px"}}>"{task.description}"</blockquote>
+                <h4 style={{ margin: "1px", padding: "1px" }} className="grey-text">Stats:</h4>
+                <h5 className="left-align"><b>Difficulty:</b> {difficulty}</h5>
+                <h5 className="left-align"><b>Time:</b> {time}</h5>
+                <h5 className="left-align"><b>Strength:</b> {increases.strength}</h5>
+                <h5 className="left-align"><b>Intelligence:</b> {increases.intelligence}</h5>
+                <h5 className="left-align"><b>Stamina:</b> {increases.stamina}</h5>
+                <h5 className="left-align"><b>Grit:</b> {increases.grit}</h5>
+                <h5 className="left-align"><b>Karma:</b> {increases.karma}</h5>
+                <h5 className="left-align"><b>Luck:</b> {increases.luck}</h5>
 
                 { footer }
                 <Link to='/'>
