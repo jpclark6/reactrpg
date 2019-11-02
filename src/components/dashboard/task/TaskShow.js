@@ -5,6 +5,7 @@ import { compose } from 'redux';
 import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import calculateStatIncrease from './TaskStats';
+import TimeAgo from 'react-timeago';
 
 const TaskShow = (props) => {
     const { id, task, auth } = props;
@@ -55,9 +56,9 @@ const TaskShow = (props) => {
 
         const footer = task.completed ? 
             task.successful ?
-                <h5>Completed successfully on {new Date(task.updatedAt.seconds * 1000).toLocaleString()}</h5>
+                <h5>Completed successfully <TimeAgo date={new Date(task.updatedAt.seconds * 1000).toLocaleString()} /> </h5>
                 :
-                <h5>Completed unsuccessfully on {new Date(task.updatedAt.seconds * 1000).toLocaleString()}</h5>
+                <h5>Completed unsuccessfully <TimeAgo date={new Date(task.updatedAt.seconds * 1000).toLocaleString()} /> </h5>
          : (
             <div>
                 <h5>Update quest status</h5>
