@@ -6,12 +6,18 @@ class TaskList extends Component {
     render() {
         const { tasks } = this.props;
         if (tasks) {
-            var sortedTasksMid = tasks.slice().sort((a, b) => {
+            const finishedTasks = tasks.filter(task => task.completed === true)
+            const unfinishedTasks = tasks.filter(task => task.completed === false)
+
+            const sortedFinishedTasks = finishedTasks.sort((a, b) => {
+                return b.updatedAt.seconds - a.updatedAt.seconds
+            })
+            const sortedUnfinishedTasks = unfinishedTasks.sort((a, b) => {
                 return b.createdAt.seconds - a.createdAt.seconds
             })
-            var sortedTasks = sortedTasksMid.sort((a, b) => {
-                return (a.completed === b.completed) ? 0 : a.completed ? 1 : -1; 
-            })
+
+            const sortedTasks = sortedUnfinishedTasks.concat(sortedFinishedTasks);
+
             return (
                 <div className="brown-text text-darken-4">
                     <h3 className="center">Quests</h3>
@@ -29,6 +35,7 @@ class TaskList extends Component {
                             </Link>
                         )
                     })}
+
                 </div>
             )
         } else {
