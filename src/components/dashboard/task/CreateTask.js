@@ -12,7 +12,7 @@ class CreateTask extends Component {
         category: '',
         difficulty: 5,
         time: 5,
-        recurring: 'NONE',
+        recurring: 'none',
         completed: false,
         successful: false
     }
@@ -100,30 +100,18 @@ class CreateTask extends Component {
                             Time (1 short - 10 long)<span className="red-text">*</span><input type="range" id="time" min="1" max="10" steps="1" onChange={this.handleNumChange} />
                         </p>
                     </div>
-                    <div className="input-field hide">
+                    <div className="input-field">
                         <p htmlFor="recurring" className="grey-text">Recurring<span className="red-text">*</span></p>
                         <p>
                             <label>
                                 <input id="recurring" value="none" name="recurring" type="radio" onChange={this.handleChange}/>
-                                <span>None</span>
+                                <span>No</span>
                             </label>
                         </p>
                         <p>
                             <label>
                                 <input id="recurring" value="daily" name="recurring" type="radio" onChange={this.handleChange}/>
-                                <span>Daily</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input id="recurring" value="weekly" name="recurring" type="radio" onChange={this.handleChange}/>
-                                <span>Weekly</span>
-                            </label>
-                        </p>
-                        <p>
-                            <label>
-                                <input id="recurring" value="monthly" name="recurring" type="radio" onChange={this.handleChange}/>
-                                <span>Monthly</span>
+                                <span>Yes</span>
                             </label>
                         </p>
                     </div>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { Redirect } from 'react-router-dom';
 import calculateStatIncrease from './TaskStats';
 import TimeAgo from 'react-timeago';
+import { updateTaskTick } from '../../../store/actions/taskActions';
 
 const TaskShow = (props) => {
     const { id, task, auth } = props;
@@ -54,9 +55,49 @@ const TaskShow = (props) => {
                 break;
         }
 
+        const addTick = (e) => {
+            e.preventDefault();
+            props.updateTaskTick(id, task.recurring);
+        }
+
+        var ticks, tickList;
+        var tickCount = null;
+
+        if (task.recurring !== 'none' && task.recurring !== 'NONE') {
+            console.log(task.recurring);
+            const tickTitle = 
+                <div>
+                    <a onClick={addTick} ><h5 className="btn green-text text-darken-2 white">Log current time</h5></a>
+                </div>
+            if (task.recurring === 'daily') {
+                tickCount = <h5>No instances recorded</h5>
+                ticks =
+                    <div>
+                        {tickTitle}
+                        <h6>No logged data yet</h6>
+                    </div>
+            } else {
+                const reverseTickList = [...task.recurring].reverse();
+                tickList = reverseTickList.map(tick => {
+                    return <h6 key={tick.seconds}><TimeAgo date={new Date(tick.seconds * 1000).toLocaleString()} /></h6>
+                })
+                tickCount = <h5>Completed {tickList.length} times</h5>
+                ticks =
+                    <div>
+                        { tickTitle }
+                        <h6>Total count: {tickList.length}</h6>
+                        <h5>Logged dates:</h5>
+                        { tickList }
+                    </div>
+            }
+        }
+
         const footer = task.completed ? 
             task.successful ?
-                <h5>Completed successfully <TimeAgo date={new Date(task.updatedAt.seconds * 1000).toLocaleString()} /> </h5>
+                <div>
+                    { tickCount }
+                    <h5>Completed successfully <TimeAgo date={new Date(task.updatedAt.seconds * 1000).toLocaleString()} /> </h5>
+                </div>
                 :
                 <h5>Completed unsuccessfully <TimeAgo date={new Date(task.updatedAt.seconds * 1000).toLocaleString()} /> </h5>
          : (
@@ -64,6 +105,7 @@ const TaskShow = (props) => {
                 <h5>Update quest status</h5>
                 <Link to={'/quests/finish?id=' + id + '&success=true'}><span className="green-text text-darken-2" style={{padding: "10px 40px", fontSize: "80px"}}>{"\u2713"}</span></Link>
                 <Link to={'/quests/finish?id=' + id + '&success=false'}><span className="red-text text-darken-2" style={{ padding: "10px 40px", fontSize: "80px" }}>X</span></Link>
+                { ticks }
             </div>
         )
 
@@ -111,8 +153,14 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateTaskTick: (id, recurring) => dispatch(updateTaskTick(id, recurring))
+    }
+}
+
 export default compose(
-    connect(mapStateToProps),
+    connect(mapStateToProps, mapDispatchToProps),
     firestoreConnect(props => [
         { collection: 'tasks', where: [['authorId', '==', props.auth.uid]] }
     ])

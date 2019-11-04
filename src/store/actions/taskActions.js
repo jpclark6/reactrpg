@@ -30,6 +30,25 @@ export const updateTask = (task, completed, success) => {
     }
 }
 
+export const updateTaskTick = (id, recurring) => {
+    return (dispatch, getState, { getFirebase, getFirestore }) => {
+        const firestore = getFirestore();
+        var recur = [];
+        if (recurring !== 'daily') {
+            recur = [...recurring, new Date()];
+        } else {
+            recur = [new Date()];
+        }
+        firestore.collection('tasks').doc(id).update({
+            recurring: recur
+        }).then(() => {
+            dispatch({ type: 'UPDATE_TASK_TICK', id });
+        }).catch((err) => {
+            dispatch({ type: 'UPDATE_TASK_TICK_ERROR', err })
+        })
+    }
+}
+
 export const deleteTask = (task) => {
     return (dispatch, getState, { getFirebase, getFirestore }) => {
         const firestore = getFirestore();

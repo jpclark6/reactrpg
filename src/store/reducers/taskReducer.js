@@ -8,7 +8,7 @@ const initState = {
             category: 'adulting',
             difficulty: 3,
             time: 1,
-            recurring: 'NONE',
+            recurring: 'none',
             completed: false,
             successful: false
         }
@@ -27,6 +27,12 @@ const taskReducer = (state = initState, action) => {
             console.log('updated task', action.task);
             return state
         case 'UPDATE_TASK_ERROR':
+            console.log('update task error', action.err);
+            return state
+        case 'UPDATE_TASK_TICK':
+            console.log('updated task', action.id);
+            return state
+        case 'UPDATE_TASK_TICK_ERROR':
             console.log('update task error', action.err);
             return state
         case 'DELETE_TASK':
