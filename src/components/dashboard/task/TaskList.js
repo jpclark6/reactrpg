@@ -10,7 +10,11 @@ class TaskList extends Component {
             const unfinishedTasks = tasks.filter(task => task.completed === false)
 
             const sortedFinishedTasks = finishedTasks.sort((a, b) => {
-                return b.updatedAt.seconds - a.updatedAt.seconds
+                if (b.updatedAt == null || a.updatedAt == null) {
+                    return 0
+                } else {
+                    return b.updatedAt.seconds - a.updatedAt.seconds
+                }
             })
             const sortedUnfinishedTasks = unfinishedTasks.sort((a, b) => {
                 return b.createdAt.seconds - a.createdAt.seconds
