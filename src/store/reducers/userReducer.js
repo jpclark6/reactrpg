@@ -7,7 +7,7 @@ const initState = {
         luck: 0,
         stamina: 0,
         strength: 0,
-        xp: 1
+        xp: 0
     },
     firstName: "Bob",
     isEmpty: false,

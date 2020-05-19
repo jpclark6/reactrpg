@@ -39,41 +39,46 @@ class SkillsDistributionChart extends Component {
             ];
 
             return (
-                <div style={{ margin: '15px 10px' }}>
+                maxStat === 0 ?
+                <div></div>
+                :
+                <div className="center" style={{ margin: '15px 10px' }}>
                     <div className="center">
                         <h4>Skill Distribution</h4>
                     </div>
-                    <RadarChart
-                        data={DATA}
-                        domains={DOMAIN}
-                        style={{
-                            polygons: {
-                                fillOpacity: 0,
-                                strokeWidth: 3
-                            },
-                            axes: {
-                                text: {
-                                    opacity: 1
+                    <div style={{ margin: '0px 150px' }}>
+                        <RadarChart
+                            data={DATA}
+                            domains={DOMAIN}
+                            style={{
+                                polygons: {
+                                    fillOpacity: 0,
+                                    strokeWidth: 3
+                                },
+                                axes: {
+                                    text: {
+                                        opacity: 1
+                                    }
+                                },
+                                labels: {
+                                    textAnchor: 'middle'
                                 }
-                            },
-                            labels: {
-                                textAnchor: 'middle'
-                            }
-                        }}
-                        margin={{
-                            left: 50,
-                            top: 30,
-                            bottom: 40,
-                            right: 50
-                        }}
-                        tickFormat={t => ''}
-                        width={300}
-                        height={300}
-                    >
-                        <CircularGridLines
-                            tickValues={[...new Array(10)].map((v, i) => i / 10 - 1)}
-                        />
-                    </RadarChart>
+                            }}
+                            margin={{
+                                left: 50,
+                                top: 30,
+                                bottom: 40,
+                                right: 50
+                            }}
+                            tickFormat={t => ''}
+                            width={300}
+                            height={300}
+                        >
+                            <CircularGridLines
+                                tickValues={[...new Array(10)].map((v, i) => i / 10 - 1)}
+                            />
+                        </RadarChart>
+                    </div>
                 </div>
             );
         }

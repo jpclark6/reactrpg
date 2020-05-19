@@ -25,26 +25,33 @@ class SkillsChart extends Component {
             var tickData = [];
             sortedFinishedTasks.forEach((task) => {
                 runningTotalXp += statIncrease[loc].xp
-                // taskData.push({ x: task.updatedAt.seconds - sortedFinishedTasks[0].updatedAt.seconds, y: runningTotalXp });
                 taskData.push({ x: task.updatedAt.seconds, y: runningTotalXp });
                 tickData.push({ x: (task.updatedAt.seconds * 1000).toLocaleString()})
             })
-        }
+            if (tasks.length === 0) {
+                const start = Date.now() / 1000;
+                taskData = [{ x: start - 300000, y: 0 }, { x: start, y: 0 }]
+            }
+            console.log(taskData, tasks)
+        } 
 
         return (
-            <div style={{margin: '15px 10px'}}>
-                <div className="center">
-                    <h4>XP History</h4>
+            (taskData.length <= 1) ? 
+                <h4>Not enough data for XY plot... go finish some quests!</h4>
+            :
+                <div style={{margin: '15px 10px'}}>
+                    <div className="center">
+                        <h4>XP History</h4>
+                    </div>
+                    <XYPlot height={300} width={300} margin={{left: 40, right: 10, top: 10, bottom: 120}} title={'xp'}>
+                        <VerticalGridLines />
+                        <HorizontalGridLines />
+                        <XAxis title="Date" tickLabelAngle={-90} tickFormat={v => new Date(v * 1000).toDateString()}/>
+                        <YAxis title="Total XP" />
+                        <LineSeries data={taskData} curve={'curveBundle'}/>
+                        <MarkSeries data={taskData} />
+                    </XYPlot>
                 </div>
-                <XYPlot height={300} width={300} margin={{left: 40, right: 10, top: 10, bottom: 120}} title={'xp'}>
-                    <VerticalGridLines />
-                    <HorizontalGridLines />
-                    <XAxis title="Date" tickLabelAngle={-90} tickFormat={v => new Date(v * 1000).toDateString()}/>
-                    <YAxis title="Total XP" />
-                    <LineSeries data={taskData} curve={'curveBundle'}/>
-                    <MarkSeries data={taskData} />
-                </XYPlot>
-            </div>
         );
     }
 }

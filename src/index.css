@@ -5,3 +5,8 @@ td {
 blockquote {
     border-left: 5px solid #107860;
 }
+
+svg{
+    display: block;
+    margin: auto;
+}
