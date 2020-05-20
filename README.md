@@ -1,68 +1,164 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Faahtree
 
-## Available Scripts
+## What is Faahtree?
 
-In the project directory, you can run:
+Faahtree is a mythical wisdom tree. [Faahtree](https://faahtree.com) the app is a real world RPG where you give yourself quests and gain XP. First you create a quest for yourself (any kind of task or activity) by entering in some information about the quest, and then it gets added to your quest list. 
 
-### `npm start`
+When you complete quests you gain experience in different areas, such as strength or intelligence, based on the different aspects of the quest. You can view some basic stats and charts about where your strengths and weaknesses are, and how much XP you've gained over time.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Since this is mainly an app to use on the go it's optimized for mobile, however it also works fine on any computer.
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Motivation
 
-### `npm test`
+I was working on updating some of our React apps at work and I wanted some more practice with React since I mainly do back end work. I had been on a [litRPG](https://en.wikipedia.org/wiki/LitRPG) reading binge in my free time and thought it would be cool to have a basic app to mimic an RPG game in real life. With that as motivation I decided to make a React/Redux app to do just that. I also wanted to play around with some tech I had never used so I also decided to use Firebase to host and the NoSQL Firestore as storage. 
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Screenshots
 
-### `npm run build`
+### Register and Sign In
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<img src="./screenshots/faahtree_register.png" alt="alt text" height="500px">
+<img src="./screenshots/faahtree_sign_in.png" alt="alt text" height="500px">
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+### Main status page - new and with quests
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<img src="./screenshots/faahtree_initial_page.png" alt="alt text" height="500px">
+<img src="./screenshots/faahtree_home_with_points.png" alt="alt text" height="500px">
+<img src="./screenshots/faahtree_home_mixed_quests.png" alt="alt text" height="500px">
 
-### `npm run eject`
+### Creating quests
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+<img src="./screenshots/faahtree_create_quest.png" alt="alt text" height="500px">
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Quest detail and finishing quests
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+<img src="./screenshots/faahtree_quest_detail.png" alt="alt text" height="500px">
+<img src="./screenshots/faahtree_quest_detail_reoccuring.png" alt="alt text" height="500px">
+<img src="./screenshots/faahtree_quest_completed.png" alt="alt text" height="500px">
+<img src="./screenshots/faahtree_failed_quest.png" alt="alt text" height="500px">
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+### Charts
 
-## Learn More
+<img src="./screenshots/faahtree_charts.png" alt="alt text" height="500px">
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Tech
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [React](https://reactjs.org/)
+* [Redux](https://react-redux.js.org/)
+* [Firebase](https://firebase.google.com/)
+* [Firestore](https://firebase.google.com/docs/firestore)
+* [Materialize](https://materializecss.com/)
+* [Jest](https://jestjs.io/)
 
-### Code Splitting
+## Code examples
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+### Example of how an 'exercise' quest calculates points
 
-### Analyzing the Bundle Size
+```javascript
+    var time = task.time;
+    var diff = task.difficulty;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+    ...
 
-### Making a Progressive Web App
+    case 'exercise':
+        multiplier = 2 + Math.floor(Math.sqrt(time * diff));
+        strength = 4 * multiplier;
+        intelligence = 1 * multiplier;
+        stamina = 4 * multiplier;
+        grit = 2 * multiplier;
+        karma = 2 * multiplier;
+        luck = Math.floor(Math.random() * multiplier);
+        break;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+    ...
 
-### Advanced Configuration
+    var xp = strength + intelligence + stamina + grit + karma + luck;
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+    var stats = {
+        strength: strength,
+        intelligence: intelligence,
+        stamina: stamina,
+        grit: grit,
+        karma: karma,
+        luck: luck,
+        xp: xp
+    }
+```
 
-### Deployment
+### Example return of the quest list component
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+```javascript
+    return (
+        <div className="brown-text text-darken-4">
+            <h3 className="center">Quests</h3>
+            <Link to={'/quests/create'}>
+                <div className="center-align">
+                    <p className="waves-effect waves-light btn-small teal darken-3">
+                        <i className="material-icons left">create</i>Add New Quest
+                    </p>
+                </div>
+            </Link>
+            {sortedTasks.map((task, i) => {
+                return (
+                    <Link to={'/quests/' + task.id} key={i}>
+                        <TaskDetails task={task} key={i} />
+                    </Link>
+                )
+            })}
+        </div>
+    )
+```
 
-### `npm run build` fails to minify
+### Example of createTask action
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+```javascript
+    export const createTask = (task) => {
+        return (dispatch, getState, { getFirebase, getFirestore }) => {
+            const firestore = getFirestore();
+            const authorId = getState().firebase.auth.uid;
+            firestore.collection('tasks').add({
+                ...task,
+                authorId: authorId,
+                createdAt: new Date(),
+                updatedAt: ""
+            }).then(() => {
+                dispatch({ type: 'CREATE_TASK', task });
+            }).catch((err) => {
+                dispatch({ type: 'CREATE_TASK_ERROR', err})
+            })
+        }
+    }
+```
+
+## Getting started
+
+First clone the repo in your favorite directory `git clone https://github.com/jpclark6/reactrpg.git`.
+
+Next install dependencies using `npm install`.
+
+Next update the firebase config with your credentials under `src/config/fbConfig.js`.
+
+Start it up using `npm start`.
+
+## Testing
+
+Some basic tests have been added for this app that can be run using `npm test`. 
+
+Overall the testing isn't great. While I believe in strong testing overall, building this was a huge learning experience for using React/Redux/Firebase, and testing wasn't a focus. Which brings me to my next section...
+
+## To-do/wishlist
+
+The app works. However, it's not super fun and entertaining... yet. Here's my to-do/wishlist to improve the full experience.
+
+* Gain skill badges based on points in different categories. Ex. gain 30 points in Strength and get 'Gimli Strength' badge. Additionally allow people to enter their own badge titles.
+
+* Fix chart axes initially, but just replace the charts package with something better. I used [react-vis](https://uber.github.io/react-vis/) however its documenation is lacking and I ended up not being very satisfied with the results, but I don't feel like digging through source code to fix it when I'm sure better things out there exist.
+
+* Add in cash rewards. Combine with something like Stripe to allow users to attach real rewards to finishing tasks.
+
+* Share quests with other users, such as a "Coffee date" quest.
+
+* Test! Add in extensive testing
+
+* Rip out Materialize and use custom CSS. Some JS libraries could be used for basic animations but Materialize worked well for the basics but became a burdon once I tried making things more custom. Make the UI/UX better. It looks a bit like like ameteur hour.
+
+## Thanks for checking it out

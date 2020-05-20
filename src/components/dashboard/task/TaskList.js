@@ -39,7 +39,6 @@ class TaskList extends Component {
                             </Link>
                         )
                     })}
-
                 </div>
             )
         } else {

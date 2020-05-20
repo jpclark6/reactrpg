@@ -1,0 +1,105 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`StatList is displayed 1`] = `
+<div
+  className="brown-text text-darken-4"
+>
+  <h3
+    className="center"
+    style={
+      Object {
+        "margin": "20px 0 px 12px 0px",
+      }
+    }
+  >
+    Bob
+    's Stats
+  </h3>
+  <h4
+    className="center"
+    style={
+      Object {
+        "margin": "12px",
+      }
+    }
+  >
+    Xp: 
+    0
+  </h4>
+  <h4
+    className="center"
+    style={
+      Object {
+        "margin": "12px",
+      }
+    }
+  >
+    Level: 
+    1
+  </h4>
+  <table
+    className="flow-text"
+  >
+    <thead>
+      <tr>
+        <th>
+          Skill
+        </th>
+        <th>
+          Points
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          Strength
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Intelligence
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Stamina
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Grit
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Karma
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          Luck
+        </td>
+        <td>
+          0
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+`;

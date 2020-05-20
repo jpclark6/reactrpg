@@ -46,7 +46,7 @@ class SkillsDistributionChart extends Component {
                     <div className="center">
                         <h4>Skill Distribution</h4>
                     </div>
-                    <div style={{ margin: '0px 150px' }}>
+                    <div>
                         <RadarChart
                             data={DATA}
                             domains={DOMAIN}

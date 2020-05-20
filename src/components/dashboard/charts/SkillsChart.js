@@ -43,14 +43,16 @@ class SkillsChart extends Component {
                     <div className="center">
                         <h4>XP History</h4>
                     </div>
-                    <XYPlot height={300} width={300} margin={{left: 40, right: 10, top: 10, bottom: 120}} title={'xp'}>
-                        <VerticalGridLines />
-                        <HorizontalGridLines />
-                        <XAxis title="Date" tickLabelAngle={-90} tickFormat={v => new Date(v * 1000).toDateString()}/>
-                        <YAxis title="Total XP" />
-                        <LineSeries data={taskData} curve={'curveBundle'}/>
-                        <MarkSeries data={taskData} />
-                    </XYPlot>
+                    <div>
+                        <XYPlot height={300} width={300} margin={{left: 40, right: 10, top: 10, bottom: 120}} title={'xp'}>
+                            <VerticalGridLines />
+                            <HorizontalGridLines />
+                            <XAxis title="Date" tickLabelAngle={-90} tickFormat={v => new Date(v * 1000).toDateString()}/>
+                            <YAxis title="Total XP" />
+                            <LineSeries data={taskData} curve={'curveBundle'}/>
+                            <MarkSeries data={taskData} />
+                        </XYPlot>
+                    </div>
                 </div>
         );
     }
