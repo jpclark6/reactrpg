@@ -10,11 +10,11 @@ Since this is mainly an app to use on the go it's optimized for mobile, however 
 
 ## Where to check it out
 
-Faahtree can be found at [https://faahtree.com](https://faahtree.com)
+Faahtree can be found at [https://faahtree.com](https://faahtree.com) or [https://faahtree.firebaseapp.com](https://faahtree.firebaseapp.com).
 
 ## Motivation
 
-I was working on updating some of our React apps at work and I wanted some more practice with React since I mainly do back end work. I had been on a [litRPG](https://en.wikipedia.org/wiki/LitRPG) reading binge in my free time and thought it would be cool to have a basic app to mimic an RPG game in real life. With that as motivation I decided to make a React/Redux app to do just that. I also wanted to play around with some tech I had never used so I also decided to use Firebase to host and the NoSQL Firestore as storage. 
+I was working on updating some of our React apps at work and I wanted some more practice with React since I mainly do back end work. I had been on a [LitRPG](https://en.wikipedia.org/wiki/LitRPG) reading binge in my free time and thought it would be cool to have a basic app to mimic an RPG game in real life. With that as motivation I decided to make a React/Redux app to do just that. I also wanted to play around with some tech I had never used so I also decided to use Firebase to host and the NoSQL Firestore as storage. 
 
 ## Screenshots
 
