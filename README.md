@@ -8,6 +8,10 @@ When you complete quests you gain experience in different areas, such as strengt
 
 Since this is mainly an app to use on the go it's optimized for mobile, however it also works fine on any computer.
 
+## Where to check it out
+
+Faahtree can be found at [https://faahtree.com](https://faahtree.com)
+
 ## Motivation
 
 I was working on updating some of our React apps at work and I wanted some more practice with React since I mainly do back end work. I had been on a [litRPG](https://en.wikipedia.org/wiki/LitRPG) reading binge in my free time and thought it would be cool to have a basic app to mimic an RPG game in real life. With that as motivation I decided to make a React/Redux app to do just that. I also wanted to play around with some tech I had never used so I also decided to use Firebase to host and the NoSQL Firestore as storage. 
