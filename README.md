@@ -2,7 +2,7 @@
 
 ## What is Faahtree?
 
-Faahtree is a mythical wisdom tree. [Faahtree](https://faahtree.com) the app is a real world RPG where you give yourself quests and gain XP. First you create a quest for yourself (any kind of task or activity) by entering in some information about the quest, and then it gets added to your quest list. 
+Faahtree is a mythical wisdom tree. [Faahtree](https://faahtree.web.app) the app is a real world RPG where you give yourself quests and gain XP. First you create a quest for yourself (any kind of task or activity) by entering in some information about the quest, and then it gets added to your quest list. 
 
 When you complete quests you gain experience in different areas, such as strength or intelligence, based on the different aspects of the quest. You can view some basic stats and charts about where your strengths and weaknesses are, and how much XP you've gained over time.
 
@@ -10,7 +10,7 @@ Since this is mainly an app to use on the go it's optimized for mobile, however 
 
 ## Where to check it out
 
-Faahtree can be found at [https://faahtree.com](https://faahtree.com) or [https://faahtree.firebaseapp.com](https://faahtree.firebaseapp.com).
+Faahtree can be found at [faahtree.web.app](https://faahtree.web.app).
 
 ## Motivation
 
